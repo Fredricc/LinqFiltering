@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqFiltering", "LinqFiltering.csproj", "{3E4AE67A-A829-4A08-8FD3-56A02243198E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsList", "..\StudentsList\StudentsList.csproj", "{66CCA203-41F7-4EAB-9BBD-B3B4D18A83AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqProjection", "..\LinqProjection\LinqProjection.csproj", "{4DAF1324-E6ED-4822-9A39-7156C88BA22E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3E4AE67A-A829-4A08-8FD3-56A02243198E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E4AE67A-A829-4A08-8FD3-56A02243198E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E4AE67A-A829-4A08-8FD3-56A02243198E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66CCA203-41F7-4EAB-9BBD-B3B4D18A83AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66CCA203-41F7-4EAB-9BBD-B3B4D18A83AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66CCA203-41F7-4EAB-9BBD-B3B4D18A83AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66CCA203-41F7-4EAB-9BBD-B3B4D18A83AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DAF1324-E6ED-4822-9A39-7156C88BA22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DAF1324-E6ED-4822-9A39-7156C88BA22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DAF1324-E6ED-4822-9A39-7156C88BA22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DAF1324-E6ED-4822-9A39-7156C88BA22E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,19 +9,27 @@ namespace LinqFiltering
 
         static void Initialize()
         {
-            students.Add(new Student(101, "James", "Smith"));
-            students.Add(new Student(102, "Robert", "Smith"));
-            students.Add(new Student(103, "Maria", "Rodgriguez"));
-            students.Add(new Student(104, "David", "Smith"));
-            students.Add(new Student(105, "James", "Smith"));
-            students.Add(new Student(106, "John", "SevenLast"));
-            students.Add(new Student(107, "Maria", "Garcia"));
-            students.Add(new Student(108, "Mary", "Smith"));
+            students.Add(new EngineeringStudent(101, "James", "Smith"));
+            students.Add(new MedicalStudent(102, "Robert", "Smith"));
+            students.Add(new EngineeringStudent(103, "Maria", "Rodgriguez"));
+            students.Add(new MedicalStudent(104, "David", "Smith"));
+            students.Add(new MedicalStudent(105, "James", "Smith"));
+            students.Add(new EngineeringStudent(106, "John", "SevenLast"));
+            students.Add(new MedicalStudent(107, "Maria", "Garcia"));
+            students.Add(new MedicalStudent(108, "Mary", "Smith"));
         }
 
         static void Main(string[] args)
         {
             Initialize();
+
+            LinqOfType();
+        }
+
+        static void LinqWhere()
+        {
+            Console.WriteLine("Query Syntax");
+
             IEnumerable<Student> query = from student in students
                                          where student.LastName.Equals("Smith")
                                          select student;
@@ -30,7 +38,32 @@ namespace LinqFiltering
             {
                 Console.WriteLine($"{item.FirstName}  {item.LastName}");
             }
-            Console.ReadKey();
+
+            Console.WriteLine("\nMethod Syntax");
+
+            IEnumerable<Student> methodQuery = students.Where(student => student.LastName.Equals("Smith")).Select(student => student);
+
+            foreach (Student item in methodQuery)
+            {
+                Console.WriteLine($"{item.FirstName}  {item.LastName}");
+
+            }
         }
+    
+        static void LinqOfType()
+        {
+            IEnumerable<MedicalStudent> methodOfType = students.OfType<MedicalStudent>();
+
+            Console.WriteLine("Medical Student");
+
+
+            foreach (MedicalStudent item in methodOfType)
+            {
+                Console.WriteLine($"{item.FirstName}  {item.LastName}");
+
+            }
+
+        }
+    
     }
 }
