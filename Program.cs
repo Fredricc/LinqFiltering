@@ -25,7 +25,9 @@ namespace LinqFiltering
 
             //LinqOfType();
 
-            LinqOrderBy();
+            //LinqOrderBy();
+
+            LinqOrderByDesc();
         }
 
         static void LinqWhere()
@@ -52,12 +54,13 @@ namespace LinqFiltering
             }
         }
 
-        static void LinqOrderBy()
+        static void LinqOrderByDesc()
         {
             Console.WriteLine("Query Syntax");
 
             var query = from student in students
-                        select (student.StudentId, student.FirstName);
+                        orderby student.FirstName, student.LastName
+                        select student;
 
             foreach (var item in query)
             {
@@ -66,7 +69,31 @@ namespace LinqFiltering
 
             Console.WriteLine("\nMethod Syntax");
 
-            IEnumerable<Student> methodQuery = students.Select(student => student);
+            IEnumerable<Student> methodQuery = students.OrderByDescending(students => students.LastName).ThenBy(students => students.FirstName).Select(student => student);
+
+            foreach (Student item in methodQuery)
+            {
+                Console.WriteLine($"{item.FirstName}  {item.LastName}");
+
+            }
+        }
+
+        static void LinqOrderBy()
+        {
+            Console.WriteLine("Query Syntax");
+
+            var query = from student in students
+                        orderby student.FirstName
+                        select student;
+
+            foreach (var item in query)
+            {
+                Console.WriteLine($"{item.StudentId}  {item.FirstName}");
+            }
+
+            Console.WriteLine("\nMethod Syntax");
+
+            IEnumerable<Student> methodQuery = students.OrderBy(students => students.LastName).Select(student => student);
 
             foreach (Student item in methodQuery)
             {
