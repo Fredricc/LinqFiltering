@@ -27,7 +27,11 @@ namespace LinqFiltering
 
             //LinqOrderBy();
 
-            LinqOrderByDesc();
+            // LinqOrderByDesc();
+
+            //LinqThenByDesc();
+
+            LinqReverse();
         }
 
         static void LinqWhere()
@@ -54,6 +58,42 @@ namespace LinqFiltering
             }
         }
 
+        static void LinqReverse()
+        {
+            Console.WriteLine("Query Syntax");
+
+             students.Reverse();
+
+            foreach (Student item in students)
+            {
+                Console.WriteLine($"{item.StudentId} {item.FirstName}  {item.LastName}");
+
+            }
+        }
+
+        static void LinqThenByDesc()
+        {
+            Console.WriteLine("Query Syntax");
+
+            var query = from student in students
+                        orderby student.FirstName, student.LastName descending
+                        select student;
+
+            foreach (var item in query)
+            {
+                Console.WriteLine($"{item.StudentId}  {item.FirstName}");
+            }
+
+            Console.WriteLine("\nMethod Syntax");
+
+            IEnumerable<Student> methodQuery = students.OrderByDescending(students => students.LastName).ThenByDescending(students => students.FirstName).Select(student => student);
+
+            foreach (Student item in methodQuery)
+            {
+                Console.WriteLine($"{item.FirstName}  {item.LastName}");
+
+            }
+        }
         static void LinqOrderByDesc()
         {
             Console.WriteLine("Query Syntax");
