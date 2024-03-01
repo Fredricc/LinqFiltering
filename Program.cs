@@ -60,7 +60,7 @@ namespace LinqFiltering
 
         static void LinqReverse()
         {
-            Console.WriteLine("Query Syntax");
+            Console.WriteLine("Query LinqReverse Syntax");
 
              students.Reverse();
 
