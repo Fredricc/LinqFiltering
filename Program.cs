@@ -31,9 +31,50 @@ namespace LinqFiltering
 
             //LinqThenByDesc();
 
-            LinqReverse();
+            //LinqReverse();
+
+            LinqJoin();
         }
 
+
+        static void LinqJoin()
+        {
+            {
+                Console.WriteLine("Query Syntax");
+
+                IEnumerable<Student> query = from student in students
+                                             where student.LastName.Equals("Smith")
+                                             select student;
+
+                foreach (Student item in query)
+                {
+                    Console.WriteLine($"{item.FirstName}  {item.LastName}");
+                }
+
+                Console.WriteLine("\nMethod Syntax");
+
+                IEnumerable<Student> methodQuery = students.Where(student => student.LastName.Equals("Smith")).Select(student => student);
+
+                foreach (Student item in methodQuery)
+                {
+                    Console.WriteLine($"{item.FirstName}  {item.LastName}");
+
+                }
+            }
+
+            static void LinqReverse()
+            {
+                Console.WriteLine("Query LinqReverse Syntax");
+
+                students.Reverse();
+
+                foreach (Student item in students)
+                {
+                    Console.WriteLine($"{item.StudentId} {item.FirstName}  {item.LastName}");
+
+                }
+            }
+        }
         static void LinqWhere()
         {
             Console.WriteLine("Query Syntax");
