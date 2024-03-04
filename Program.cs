@@ -7,16 +7,22 @@ namespace LinqFiltering
     {
         static List<Student> students = new List<Student>();
 
+        static List<Course> courses = new List<Course>();
+
         static void Initialize()
         {
-            students.Add(new Student(101, "James", "Smith"));
-            students.Add(new Student(102, "Robert", "Smith"));
-            students.Add(new Student(103, "Maria", "Rodgriguez"));
-            students.Add(new Student(104, "David", "Smith"));
-            students.Add(new Student(105, "James", "Smith"));
-            students.Add(new Student(106, "John", "SevenLast"));
-            students.Add(new Student(107, "Maria", "Garcia"));
-            students.Add(new Student(108, "Mary", "Smith"));
+            students.Add(new Student(101, "James", "Smith", 11));
+            students.Add(new Student(102, "Robert", "Smith", 22));
+            students.Add(new Student(103, "Maria", "Rodgriguez", 11));
+            students.Add(new Student(104, "David", "Smith", 33));
+            students.Add(new Student(105, "James", "Smith", 22));
+            students.Add(new Student(106, "John", "SevenLast", 11));
+            students.Add(new Student(107, "Maria", "Garcia", 33));
+            students.Add(new Student(108, "Mary", "Smith", 33));
+
+            courses.Add(new Course(11, "Marketing"));
+            courses.Add(new Course(22, "Finance"));
+            courses.Add(new Course(33, "Computer Science"));
         }
 
         static void Main(string[] args)
@@ -33,31 +39,33 @@ namespace LinqFiltering
 
             //LinqReverse();
 
-            LinqJoin();
+            LinqJoinOperation();
         }
 
 
-        static void LinqJoin()
+        static void LinqJoinOperation()
         {
             {
                 Console.WriteLine("Query Syntax");
 
-                IEnumerable<Student> query = from student in students
-                                             where student.LastName.Equals("Smith")
-                                             select student;
+                var query = from student in students
+                            join course in courses
+                            on student.CourseId equals course.CourseId
+                            select new { student.StudentId, student.FirstName, course.CourseName };
 
-                foreach (Student item in query)
+                foreach (var item in query)
                 {
-                    Console.WriteLine($"{item.FirstName}  {item.LastName}");
+                    Console.WriteLine($"{item.StudentId}  {item.FirstName}  {item.CourseName}");
                 }
 
                 Console.WriteLine("\nMethod Syntax");
 
-                IEnumerable<Student> methodQuery = students.Where(student => student.LastName.Equals("Smith")).Select(student => student);
+                var methodQuery = students.Join(courses, student => student.CourseId, course => course.CourseId,
+                    (s, c) => new { s.StudentId, s.FirstName, c.CourseName });
 
-                foreach (Student item in methodQuery)
+                foreach (var item in methodQuery)
                 {
-                    Console.WriteLine($"{item.FirstName}  {item.LastName}");
+                    Console.WriteLine($"{item.StudentId}  {item.FirstName}  {item.CourseName}");
 
                 }
             }
