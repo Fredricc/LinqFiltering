@@ -39,11 +39,50 @@ namespace LinqFiltering
 
             //LinqReverse();
 
-            LinqJoinOperation();
+            //LinqJoinOperation();
+
+            LinqGroupJoin();
+
         }
 
+        static void LinqGroupJoin()
+        {
+            {
+                Console.WriteLine("Query Syntax");
 
-        static void LinqJoinOperation()
+                var query = from course in courses
+                            join student in students
+                            on course.CourseId equals student.CourseId
+                            into CourseStudents
+                            select new { course.CourseName, CourseStudents };
+
+                foreach (var item in query)
+                {
+                    Console.WriteLine($"\n{item.CourseName}");
+
+                    foreach (var student in item.CourseStudents)
+                        Console.WriteLine($"{student.StudentId} {student.FirstName}");
+                }
+
+                Console.WriteLine("\nMethod Syntax");
+
+                var methodQuery = courses.GroupJoin(students,
+                    course => course.CourseId,
+                    student => student.CourseId,
+                    (c, CourseStudents) => new { c.CourseName, CourseStudents });
+
+                foreach (var item in methodQuery)
+                {
+                    Console.WriteLine($"\n{item.CourseName}");
+
+                    foreach (var student in item.CourseStudents)
+                        Console.WriteLine($"{student.StudentId} {student.FirstName}");
+
+                }
+            }
+        }
+
+            static void LinqJoinOperation()
         {
             {
                 Console.WriteLine("Query Syntax");
