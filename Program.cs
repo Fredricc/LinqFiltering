@@ -41,8 +41,42 @@ namespace LinqFiltering
 
             //LinqJoinOperation();
 
-            LinqGroupJoin();
+            //LinqGroupJoin();
 
+            LinqGroupBy();
+
+        }
+
+        static void LinqGroupBy()
+        {
+            {
+                Console.WriteLine("Query Syntax");
+
+                var query = from student in students
+                            group student by student.CourseId;
+
+                foreach (var item in query)
+                {
+                    Console.WriteLine($"\n{item.Key}");
+
+                    foreach (Student s in item)
+                        Console.WriteLine($"{s.FirstName} {s.LastName}");
+                }
+
+                Console.WriteLine("\nMethod Syntax");
+
+                var methodQuery = students.GroupBy(
+                    student => student.CourseId);
+
+                foreach (var item in methodQuery)
+                {
+                    Console.WriteLine($"\n{item.Key}");
+
+                    foreach (Student s in item)
+                        Console.WriteLine($"{s.FirstName} {s.LastName}");
+
+                }
+            }
         }
 
         static void LinqGroupJoin()
