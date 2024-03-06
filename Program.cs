@@ -11,18 +11,18 @@ namespace LinqFiltering
 
         static void Initialize()
         {
-            students.Add(new Student(101, "James", "Smith", 11));
-            students.Add(new Student(102, "Robert", "Smith", 22));
+            students.Add(new Student(101, "James", "Smith", 1));
+            students.Add(new Student(102, "Robert", "Smith", 2));
             students.Add(new Student(103, "Maria", "Rodgriguez", 11));
-            students.Add(new Student(104, "David", "Smith", 33));
-            students.Add(new Student(105, "James", "Smith", 22));
-            students.Add(new Student(106, "John", "SevenLast", 11));
-            students.Add(new Student(107, "Maria", "Garcia", 33));
-            students.Add(new Student(108, "Mary", "Smith", 33));
+            students.Add(new Student(104, "David", "Smith", 3));
+            students.Add(new Student(105, "James", "Smith", 2));
+            students.Add(new Student(106, "John", "SevenLast", 1));
+            students.Add(new Student(107, "Maria", "Garcia", 3));
+            students.Add(new Student(108, "Mary", "Smith", 3));
 
-            courses.Add(new Course(11, "Marketing"));
-            courses.Add(new Course(22, "Finance"));
-            courses.Add(new Course(33, "Computer Science"));
+            courses.Add(new Course(1, "Marketing"));
+            courses.Add(new Course(2, "Finance"));
+            courses.Add(new Course(3, "Computer Science"));
         }
 
         static void Main(string[] args)
@@ -43,8 +43,29 @@ namespace LinqFiltering
 
             //LinqGroupJoin();
 
-            LinqGroupBy();
+            //LinqGroupBy();
 
+            LinqToLookup();
+
+        }
+
+        static void LinqToLookup()
+        {
+            {
+                Console.WriteLine("\nMethod Syntax");
+
+                var methodQuery = students.ToLookup(
+                    student => student.CourseId);
+
+                for (int i = 1; i < 4; i++)
+                {
+                    Console.WriteLine($"\n{i}");
+
+                    foreach (Student s in methodQuery[i])
+                        Console.WriteLine($"{s.FirstName} {s.LastName}");
+                }
+
+            }
         }
 
         static void LinqGroupBy()
