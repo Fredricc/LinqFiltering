@@ -14,7 +14,7 @@ namespace LinqFiltering
             students.Add(new Student(101, "James", "Smith", 1));
             students.Add(new Student(102, "Robert", "Smith", 2));
             students.Add(new Student(103, "Maria", "Rodgriguez", 11));
-            students.Add(new Student(104, "David", "Smith", 3));
+            students.Add(new Student(104, "Davidson", "Smith", 3));
             students.Add(new Student(105, "Jameson", "Smith", 2));
             students.Add(new Student(106, "Johnson", "SevenLast", 1));
             students.Add(new Student(107, "Marian", "Garcia", 3));
