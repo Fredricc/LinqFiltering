@@ -18,7 +18,7 @@ namespace LinqFiltering
             students.Add(new Student(105, "Jameson", "Smith", 2));
             students.Add(new Student(106, "Johnson", "SevenLast", 1));
             students.Add(new Student(107, "Marian", "Garcia", 3));
-            students.Add(new Student(108, "Mary", "Smith", 3));
+            students.Add(new Student(108, "Marian", "Smith", 3));
 
             courses.Add(new Course(1, "Digital Marketing"));
             courses.Add(new Course(2, "Finance"));
