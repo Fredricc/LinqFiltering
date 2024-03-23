@@ -12,7 +12,7 @@ namespace LinqFiltering
         static void Initialize()
         {
             students.Add(new Student(101, "James", "Smith", 1));
-            students.Add(new Student(102, "Roberts", "Smith", 2));
+            students.Add(new Student(102, "Robertson", "Smith", 2));
             students.Add(new Student(103, "Marian", "Rodgriguez", 11));
             students.Add(new Student(104, "Davidson", "Smith", 3));
             students.Add(new Student(105, "Jameson", "Smith", 2));
