@@ -18,11 +18,11 @@ namespace LinqFiltering
             students.Add(new Student(105, "Jameson", "Smith", 2));
             students.Add(new Student(106, "Johnson", "SevLast", 1));
             students.Add(new Student(107, "Marian", "Garcian", 3));
-            students.Add(new Student(108, "Marian", "Smith", 3));
+            students.Add(new Student(108, "Tom ","Smith", 3));
 
             courses.Add(new Course(1, "Digital Marketing"));
             courses.Add(new Course(2, "Devops"));
-            courses.Add(new Course(3, "Computer Science"));
+            courses.Add(new Course(3, "Computer Science")); 
         }
 
         static void Main(string[] args)
